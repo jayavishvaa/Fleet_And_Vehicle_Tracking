@@ -16,7 +16,7 @@ const validationSchema = Yup.object().shape({
         .matches(/^[0-9]+$/, "Must be only digits")
 })
 
-function VerifyAndCreateAccount() {
+function VerifyAndCreateAccount({navigation}) {
     const [otp1, setOtp1] = useState('');
     const [otp2, setOtp2] = useState('');
     const [otp3, setOtp3] = useState('');
@@ -55,7 +55,9 @@ function VerifyAndCreateAccount() {
                         keyboardType="number-pad"
                     />
                 </View>
-                <TouchableOpacity mode="contained" style={{width:'70%',backgroundColor:'rgba(92, 219, 149, 1)',height:50,alignItems:'center',justifyContent:'center',borderRadius:8,alignSelf:'center'}} >
+                <TouchableOpacity mode="contained" style={{width:'70%',backgroundColor:'rgba(92, 219, 149, 1)',height:50,alignItems:'center',justifyContent:'center',borderRadius:8,alignSelf:'center'}} 
+                    onPress={() => navigation.navigate(routes.NAVIGATIONAPP)}
+                >
                     <Text style={{color: 'black',fontSize: 15,fontWeight: "bold"}}>VERIFY</Text>
                 </TouchableOpacity>
             </View>

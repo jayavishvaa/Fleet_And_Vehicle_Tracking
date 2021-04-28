@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, Header } from '@react-navigation/stack';
 import routes from './Screens/routes';
 import VerifyAndCreateAccount from './Screens/VerifyAndCreateAccount';
+import NavigationApp from './Screens/Navigation/AppNavigator';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
           <Stack.Screen name={routes.SIGNUP} component={Signup}/>
           <Stack.Screen name={routes.OTPVERIFICATION} component={OtpVerification}/>
           <Stack.Screen name={routes.VERIFYANDCREATEACCOUNT} component={VerifyAndCreateAccount}/>
+          <Stack.Screen name={routes.NAVIGATIONAPP} component={NavigationApp}/>
         </Stack.Navigator>
       </NavigationContainer>
   );
