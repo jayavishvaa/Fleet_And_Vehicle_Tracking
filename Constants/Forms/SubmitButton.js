@@ -1,33 +1,21 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { useFormikContext } from "formik";
+import Button from '../Button';
 
 
-function AppButton({ title, onPress, style, ...otherProps }) {
+function AppButton({ title, style, ...otherProps }) {
+  const {handleSubmit} = useFormikContext();
+
   return (
-    <TouchableOpacity
-      style={[styles.button, style]}
-      onPress={onPress}
+    <Button
+      title={title}
+      style={style}
+      onPress={handleSubmit}
       {...otherProps}
-    >
-      <Text style={styles.text}>{title}</Text>
-    </TouchableOpacity>
+    />
   );
 }
 
-const styles = StyleSheet.create({
-  button: {
-    borderRadius: 8,
-    borderWidth:1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: '3%',
-    backgroundColor:'rgba(92, 219, 149, 1)'
-  },
-  text: {
-    color: 'black',
-    fontSize: 15,
-    fontWeight: "bold"
-  },
-});
 
 export default AppButton;

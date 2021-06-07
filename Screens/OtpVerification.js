@@ -21,7 +21,7 @@ function OtpVerification({navigation}) {
                     <Title style={{fontSize:23}}>OTP Verification</Title>
                     <Text style={{fontSize:14,marginTop:'3%'}}>An One Time Password will be sent to the mobile number</Text>
                 </View>
-                <View style={{marginLeft:'10%'}}>
+                <View style={{marginLeft:'10%',width:'80%'}}>
                     <AppForm
                         initialValues={{ phoneNumber: ''}}
                         validationSchema={phoneNumbervalidationSchema}
@@ -34,12 +34,10 @@ function OtpVerification({navigation}) {
                             name="phoneNumber"
                             label="Mobile Number"
                             placeholder="Mobile Number"
-                            style={{width:'82%',backgroundColor:'rgba(237, 245, 225, 1)'}}
+                            style={{width:'100%',backgroundColor:'rgba(237, 245, 225, 1)'}}
                         />
+                        <AppButton title="GET OTP" style={{marginTop:'10%',alignSelf:'center'}} onPress={() => navigation.navigate(routes.VERIFYANDCREATEACCOUNT)} />
                     </AppForm>
-                </View>
-                <View style={{marginTop:'10%',alignItems:'center'}}>
-                    <AppButton title="GET OTP" style={{width:'72%'}} onPress={() => navigation.navigate(routes.VERIFYANDCREATEACCOUNT)} />
                 </View>
             </View>
         </Screen>

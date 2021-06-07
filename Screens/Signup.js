@@ -64,7 +64,7 @@ const Signup = ({navigation}) => {
                         <Text style={{color: 'black',fontSize: 15,fontWeight: "bold"}}>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
-                <View>
+                <View style={{width:'80%'}}>
                 <AppForm
                         initialValues={{ userName: '',Emailorusername:'', password: '',passwordConfirmation:'' }}
                         validationSchema={validationSchema}
@@ -77,7 +77,7 @@ const Signup = ({navigation}) => {
                             name="userName"
                             label="Username"
                             placeholder="Username "
-                            style={{width:'80%',backgroundColor:'rgba(237, 245, 225, 1)'}}
+                            style={{width:'100%',backgroundColor:'rgba(237, 245, 225, 1)'}}
                         />
                         <AppFormField
                             autoCapitalize="none"
@@ -86,7 +86,7 @@ const Signup = ({navigation}) => {
                             name="Emailorusername"
                             label="Email or Username"
                             placeholder="Email or Username "
-                            style={{width:'80%',backgroundColor:'rgba(237, 245, 225, 1)'}}
+                            style={{width:'100%',backgroundColor:'rgba(237, 245, 225, 1)'}}
                         />
                         <AppFormField
                             autoCapitalize="none"
@@ -94,7 +94,7 @@ const Signup = ({navigation}) => {
                             keyboardType="default"
                             name="password"
                             label="Password"
-                            style={{width:'80%',backgroundColor:'rgba(237, 245, 225, 1)'}}
+                            style={{width:'100%',backgroundColor:'rgba(237, 245, 225, 1)'}}
                             placeholder="Password"
 
                         />
@@ -104,7 +104,7 @@ const Signup = ({navigation}) => {
                             keyboardType="default"
                             name="passwordConfirmation"
                             label="Confirm Password"
-                            style={{width:'80%',backgroundColor:'rgba(237, 245, 225, 1)'}}
+                            style={{width:'100%',backgroundColor:'rgba(237, 245, 225, 1)'}}
                             placeholder="Confirm Password"
                         />
                         <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
@@ -133,10 +133,8 @@ const Signup = ({navigation}) => {
                             />
                             <Text>Admin</Text>
                         </View>
+                        <AppButton title="SIGN UP" onPress={() => navigation.navigate(routes.OTPVERIFICATION)} style={{marginTop:'10%',alignSelf:'center'}}/>
                     </AppForm>
-                </View>
-                <View style={{width:'72%',marginTop:'10%'}}>
-                    <AppButton title="SIGN UP" onPress={() => navigation.navigate(routes.OTPVERIFICATION)}/>
                 </View>
             </View>
             </ScrollView>
