@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View,Text,StyleSheet,TouchableOpacity} from 'react-native';
+import { View,Text,StyleSheet,TouchableOpacity, Image} from 'react-native';
 import { TextInput, Title , Button,RadioButton, Checkbox} from 'react-native-paper';
 import Screen from '../Constants/Screen';
 import routes from './routes';
@@ -8,6 +8,7 @@ import AppForm from '../Constants/Forms/Form';
 import AppFormField from '../Constants/Forms/FormField';
 import AppButton from '../Constants/Forms/SubmitButton';
 import { ScrollView } from 'react-native-gesture-handler';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const validationSchema = Yup.object().shape({
@@ -54,11 +55,17 @@ const Signup = ({navigation}) => {
 
     return (
         <Screen>
-            <ScrollView>
+            <LinearGradient
+                style={{flex:1}}
+                start={{ x: 0, y: 0 }}
+                end={{x: 1, y: 1 }}
+                colors={['#4caf50','transparent']}
+            >
+            <ScrollView> 
             <View style={{alignItems:'center',justifyContent:'center',marginTop:'10%'}}>
                 <View style={{flexDirection:'row',marginTop:'5%',width:'74%'}}>
                     <TouchableOpacity mode="contained" style={{width:'50%',height:50,alignItems:'center',justifyContent:'center',borderRadius:8}} onPress={() => navigation.navigate(routes.LOGIN)} >
-                        <Text style={{color: 'rgba(92, 219, 149, 1)',fontSize: 15,fontWeight: "bold"}}>LOG IN</Text>
+                        <Text style={{color: '#194d33',fontSize: 15,fontWeight: "bold"}}>LOG IN</Text>
                     </TouchableOpacity>
                     <TouchableOpacity mode="contained" style={{width:'50%',height:50,alignItems:'center',justifyContent:'center',borderRadius:8,backgroundColor:'rgba(92, 219, 149, 1)'}} onPress={() => navigation.navigate(routes.SIGNUP)}>
                         <Text style={{color: 'black',fontSize: 15,fontWeight: "bold"}}>SIGN UP</Text>
@@ -138,6 +145,7 @@ const Signup = ({navigation}) => {
                 </View>
             </View>
             </ScrollView>
+            </LinearGradient>
         </Screen>
     )
 }

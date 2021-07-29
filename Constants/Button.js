@@ -22,10 +22,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         padding: '3%',
         width:'90%',
-        backgroundColor:'rgba(92, 219, 149, 1)'
+        // backgroundColor:'rgba(92, 219, 149, 1)'
+        backgroundColor:'#f06292'
       },
       text: {
-        color: 'black',
+        color: '#fff',
         fontSize: 15,
         fontWeight: "bold"
       },

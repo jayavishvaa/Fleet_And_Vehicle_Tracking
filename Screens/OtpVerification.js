@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import ErrorMessage from '../Constants/Forms/ErrorMessage';
 import AppForm from '../Constants/Forms/Form';
 import AppFormField from '../Constants/Forms/FormField';
+import { LinearGradient } from 'expo-linear-gradient';
 import AppButton from '../Constants/Forms/SubmitButton';
 
 const phoneNumbervalidationSchema = Yup.object().shape({
@@ -16,7 +17,13 @@ const phoneNumbervalidationSchema = Yup.object().shape({
 function OtpVerification({navigation}) {
     return (
         <Screen>
-            <View >
+            <LinearGradient
+                style={{flex:1}}
+                start={{ x: 0, y: 0 }}
+                end={{x: 1, y: 1 }}
+                colors={['#4caf50','transparent']}
+            >
+            <View>
                 <View style={{marginLeft:'15%',marginRight:'15%',marginTop:'15%'}} >
                     <Title style={{fontSize:23}}>OTP Verification</Title>
                     <Text style={{fontSize:14,marginTop:'3%'}}>An One Time Password will be sent to the mobile number</Text>
@@ -36,10 +43,15 @@ function OtpVerification({navigation}) {
                             placeholder="Mobile Number"
                             style={{width:'100%',backgroundColor:'rgba(237, 245, 225, 1)'}}
                         />
-                        <AppButton title="GET OTP" style={{marginTop:'10%',alignSelf:'center'}} onPress={() => navigation.navigate(routes.VERIFYANDCREATEACCOUNT)} />
+                        <AppButton 
+                            title="GET OTP" 
+                            style={{marginTop:'10%',alignSelf:'center'}} 
+                            onPress={() => navigation.navigate(routes.VERIFYANDCREATEACCOUNT)} 
+                        />
                     </AppForm>
                 </View>
             </View>
+            </LinearGradient>
         </Screen>
     );
 }

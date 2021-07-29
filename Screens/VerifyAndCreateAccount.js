@@ -8,6 +8,7 @@ import ErrorMessage from '../Constants/Forms/ErrorMessage';
 import AppForm from '../Constants/Forms/Form';
 import AppFormField from '../Constants/Forms/FormField';
 import AppButton from '../Constants/Forms/SubmitButton';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const validationSchema = Yup.object().shape({
@@ -24,11 +25,18 @@ function VerifyAndCreateAccount({navigation}) {
 
     return (
         <Screen>
+            <LinearGradient
+                style={{flex:1}}
+                start={{ x: 0, y: 0 }}
+                end={{x: 1, y: 1 }}
+                colors={['#4caf50','transparent']}
+            >
             <View>
                 <View style={{marginLeft:'15%',marginRight:'15%',marginTop:'15%'}} >
                     <Title style={{fontSize:23}}>Verify and create account</Title>
                     <Text style={{fontSize:14,marginTop:'3%'}}>Enter the OTP sent to 9876543210 and verify</Text>
                 </View>
+                <AppForm>
                 <View style={{margin:'15%',flexDirection:'row',justifyContent:'space-between',height:55}}>
                     <TextInput
                         value={otp1}
@@ -55,12 +63,19 @@ function VerifyAndCreateAccount({navigation}) {
                         keyboardType="number-pad"
                     />
                 </View>
-                <TouchableOpacity mode="contained" style={{width:'70%',backgroundColor:'rgba(92, 219, 149, 1)',height:50,alignItems:'center',justifyContent:'center',borderRadius:8,alignSelf:'center'}} 
+                <AppButton 
+                    title="VERIFY" 
+                    style={{marginTop:'10%',alignSelf:'center',width:'75%'}} 
+                    onPress={() => navigation.navigate(routes.NAVIGATIONAPP)} 
+                />
+                </AppForm>
+                {/* <TouchableOpacity mode="contained" style={{width:'70%',backgroundColor:'rgba(92, 219, 149, 1)',height:50,alignItems:'center',justifyContent:'center',borderRadius:8,alignSelf:'center'}} 
                     onPress={() => navigation.navigate(routes.NAVIGATIONAPP)}
                 >
                     <Text style={{color: 'black',fontSize: 15,fontWeight: "bold"}}>VERIFY</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
+            </LinearGradient>
         </Screen>
     );
 }

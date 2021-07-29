@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, SafeAreaView} from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, SafeAreaView, Dimensions} from 'react-native';
 import { TextInput, Title, Checkbox, Button,Divider } from 'react-native-paper';
 import Screen from '../Constants/Screen';
 import routes from './routes';
@@ -8,6 +8,9 @@ import { AntDesign } from '@expo/vector-icons';
 import Header from '../Constants/Header';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import LoctionMarker from '../Constants/LoctionMarker';
+// import { lightGreen100 } from 'react-native-paper/lib/typescript/styles/colors';
+
+const {width, height} = Dimensions.get('window');
 
 const fakeDriverLocation = [
     {
@@ -38,34 +41,65 @@ function DriverDetails() {
         <Screen>
             <Header/>
             <ScrollView style={{backgroundColor:'rgba(237, 245, 225, 1)',flex:1}}>
-                <View style={{width:'90%',height:200,backgroundColor:'#fff',margin:'5%',borderRadius:20,alignSelf:'center'}}>
-                    <View style={{alignItems:'center',margin:'5%'}}>
-                        <Title style={{color:'rgba(5, 56, 107, 1)',fontSize:25}}>Vehicle alloted</Title>
-                        <Title style={{color:'rgba(55, 150, 131, 1)'}}>Tata Intra V30</Title>
-                        <View style={{alignItems:'center',flexDirection:'row'}}>
-                            <Title style={{color:'rgba(55, 150, 131, 1)'}}>White </Title>
-                            <Title style={{color:'rgba(55, 150, 131, 1)'}}>(TN 22 DA 1234)</Title>
+
+                {/* Home page first box */}
+
+                <View style={{
+                    width:'100%',
+                    backgroundColor:'#fcb900',
+                    alignSelf:'center',
+                    elevation:10,
+                    shadowColor:'#000',
+                    shadowRadius:2,
+                    shadowOffset: { width:0, height: 1},
+                    shadowOpacity: 0.8,
+                    borderTopLeftRadius:0,
+                    borderTopRightRadius:0,
+                    flex:1,
+                    position:'absolute',
+                }}>
+                    <View style={{alignItems:'center',margin:'5%',flexDirection:'row',justifyContent:'space-between'}}>
+                        <View>
+                            <Text style={{color:'rgba(5, 56, 107, 1)',fontSize:18,fontWeight:'bold'}}>Vehicle alloted</Text>
+                            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>Tata Intra V30</Text>
+                            <View style={{alignItems:'center',flexDirection:'row'}}>
+                                <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>White </Text>
+                                <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>(TN 22 DA 1234)</Text>
+                            </View>
                         </View>
                         <View style={{flexDirection:'row'}}>
                             <View style={{alignItems:'center',marginRight:'15%'}}>
-                                <Title style={{color:'rgba(5, 56, 107, 1)'}}>Total</Title>
-                                <Title style={{color:'rgba(55, 150, 131, 1)'}}>15</Title>
+                                <Text style={{color:'rgba(5, 56, 107, 1)',fontSize:15,fontWeight:'bold'}}>Total</Text>
+                                <Text style={{color:'red',fontSize:15,fontWeight:'bold'}}>15</Text>
                             </View>
                             <View style={{alignItems:'center'}}>
-                                <Title style={{color:'rgba(5, 56, 107, 1)'}}>Pending</Title>
-                                <Title style={{color:'rgba(55, 150, 131, 1)'}}>15</Title>
+                                <Text style={{color:'rgba(5, 56, 107, 1)',fontSize:15,fontWeight:'bold'}}>Pending</Text>
+                                <Text style={{color:'red',fontSize:15,fontWeight:'bold'}}>15</Text>
                             </View>
                         </View>   
                     </View>              
                 </View>
-                <View style={{width:'90%',height:90,backgroundColor:'#fff',margin:'5%',borderRadius:20,marginTop:0,alignSelf:'center',justifyContent:'center'}}>
-                    <View style={{alignItems:'center'}}>
-                        <Title style={{color:'rgba(5, 56, 107, 1)'}}>Driver</Title>
-                        <Title style={{color:'rgba(55, 150, 131, 1)'}}>MR.Abcd</Title>
-                    </View>              
-                </View>
-                <View style={{width:'90%',height:350,backgroundColor:'#fff',margin:'10%',borderRadius:20,marginTop:0,alignSelf:'center'}}>
-                    <View style={{flex:1,margin:'5%',borderColor:'black',borderWidth:1}}>
+
+                {/* Home page Mapview Container */}
+
+                {/* <View style={{
+                    width:'100%',
+                    // height:500,
+                    backgroundColor:'#fff',
+                    margin:'10%',
+                    // borderRadius:20,
+                    marginTop:0,
+                    alignSelf:'center',
+                    elevation:10,
+                    shadowColor:'#000',
+                    shadowRadius:2,
+                    shadowOffset: { width:0, height: 1},
+                    shadowOpacity: 0.8,
+                    flex:1,
+                    // overflow:'hidden',
+                    marginBottom:0,
+                }}> */}
+                    <View style={{flex:1}}>
                         <MapView
                             initialRegion={{
                                 latitude: 13.0827,
@@ -86,6 +120,7 @@ function DriverDetails() {
                                     latitude: 13.0827,
                                     longitude: 80.2707, 
                                 }}
+                                // pinColor = {green}
                             >
                                 <Callout>
                                     <Text>I'm here</Text>
@@ -97,45 +132,63 @@ function DriverDetails() {
                                     latitude: 13.0827,
                                     longitude: 80.2707,
                                 }} />
-                        </MapView> 
-                       
+                        </MapView>   
                     </View>            
+                {/* </View> */}
+
+                <View style={{
+                    width:'95%',
+                    backgroundColor:'#fcb900',
+                    borderRadius:20,
+                    alignSelf:'center',
+                    elevation:10,
+                    shadowColor:'#000',
+                    shadowRadius:2,
+                    shadowOffset: { width:0, height: 1},
+                    shadowOpacity: 0.8,
+                    flex:1,
+                    padding:'4%',
+                    marginBottom:0,
+                    position:'absolute',
+                    marginTop: height - 220,
+                    justifyContent:'flex-end',
+                }}>
+                    <View style={{flexDirection:'row',flex:1,alignItems:'center',justifyContent:'space-between',width:'100%'}}>
+                        <View style={{flexDirection:'row',alignSelf:'center',width:'50%'}}>
+                            <Text style={{color:'rgba(5, 56, 107, 1)',fontSize:18,fontWeight:'bold'}}>
+                                Next Order:
+                            </Text>
+                            <View style={{alignItems:'center',flexDirection:'row'}}>
+                                <Text style={{color:'red',fontSize:18,fontWeight:'bold'}}>
+                                {'  '}22
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={{flex:1,flexDirection:'row',width:'50%',alignSelf:'flex-end',justifyContent:'flex-end'}}>
+                                <Text style={{color:'rgba(5, 56, 107, 1)',fontSize:18,fontWeight:'bold'}}>
+                                    ETA: 
+                                </Text>
+                                <Text style={{color:'red',fontSize:18,fontWeight:'bold'}}>
+                                   {''} 15 mins
+                                </Text>
+                        </View>
+                    </View>
+                    <View style={{alignItems:'center',flex:1,marginTop:'2%'}}>
+                        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>
+                            NO.85/1, Sri Venkateswara Lodge 1st Floor, Balaji Extension, Trichy Rd, Thuraiyur, Tamil Nadu 621010
+                        </Text>
+                    </View>   
                 </View>
             </ScrollView>
-            <View style={styles.BottomWidget}>
-                <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginHorizontal:'5%'}}>
-                    <View>
-                        <Title style={{color:'rgba(5, 56, 107, 1)'}}>Next stop</Title>
-                        <Title style={{color:'rgba(55, 150, 131, 1)',fontSize:18}}>Duke Street, Dawsin road</Title>
-                    </View>
-                    <View>
-                        <Title style={{color:'rgba(5, 56, 107, 1)'}}>ETA</Title>
-                        <Title style={{color:'rgba(55, 150, 131, 1)',fontSize:18}}>25 min</Title>
-                    </View>
-                    <TouchableOpacity>
-                        <AntDesign name="doubleright" size={24} color="black" />
-                    </TouchableOpacity>
-                </View>
-            </View>
         </Screen>
     );
 }
 
 const styles = StyleSheet.create({
     MapView: {
-        flex:1,
-    },
-    BottomWidget: {
-        // position: 'absolute',
-        bottom: 0,
-        height: 60,
-        marginBottom:'2%',
-        width: '95%',
-        marginHorizontal:'2.5%',
-        borderTopEndRadius:5,
-        borderTopStartRadius:5,
-        backgroundColor:'#fff',
-        zIndex:5,
+        width: width,
+        height:height,
+        zIndex:-1
     },
 })
 
