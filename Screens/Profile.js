@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, SafeAreaView} from 'react-native';
-import { TextInput, Title, Checkbox, Button,Divider } from 'react-native-paper';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
+import { Title } from 'react-native-paper';
 import Screen from '../Constants/Screen';
 import routes from './routes';
 import {  ScrollView } from 'react-native-gesture-handler';
-import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import Header from '../Constants/Header';
 
@@ -15,6 +14,9 @@ function Profile({navigation}) {
             <Header/>
             <ScrollView style={{backgroundColor:'rgba(237, 245, 225, 1)',flex:1}}>
                 <View style={{width:'80%',alignSelf:'center',marginTop:'15%'}}>
+
+                    {/* {Linear gradient background of the profile container} */}
+
                     <LinearGradient
                         style={{flex:1,borderRadius:25}}
                         start={{ x: 0, y: 0 }}
@@ -24,9 +26,11 @@ function Profile({navigation}) {
                         <View style={{flexDirection:'row',alignSelf:'center',marginTop:'5%'}}>
                             <Title style={{color:'rgba(5, 56, 107, 1)',textAlign:'center',fontWeight:'bold'}}>Profile</Title>
                         </View>
+
+                        {/* {Basic Details} */}
+
                         <View style={{padding:'10%'}}>
                                 <Title style={{color:'rgba(5, 56, 107, 1)'}}>Basic Details</Title>
-                                {/* <View style={{width:"100%",height:100,backgroundColor:'rgba(237, 245, 225, 1)',borderRadius:10}}> */}
                                 <View style={{flex:1,width:"100%",backgroundColor:'#dce775',borderRadius:10,height:100}}>
                                     <View style={{flex:1,margin:'5%',justifyContent:'space-between'}}>
                                         <View style={{flexDirection:'row'}}>
@@ -44,6 +48,8 @@ function Profile({navigation}) {
                                     </View>
                                 </View>
 
+                                {/* {Contact Details} */}
+
                                 <View style={{marginTop:'10%'}}>
                                     <Title style={{color:'rgba(5, 56, 107, 1)'}}>Contact Details</Title>
                                     <View style={{width:"100%",height:100,backgroundColor:'#dce775',borderRadius:10}}>
@@ -59,6 +65,8 @@ function Profile({navigation}) {
                                         </View>
                                     </View>
                                 </View>
+
+                                {/* {KYC} */}
 
                                 <View style={{marginTop:'10%'}}>
                                     <Title style={{color:'rgba(5, 56, 107, 1)'}}>KYC</Title>

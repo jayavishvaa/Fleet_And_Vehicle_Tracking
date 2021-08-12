@@ -2,16 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './Screens/Login';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator, Header } from '@react-navigation/stack';
 import routes from './Screens/routes';
-// import NavigationApp from './Screens/Navigation/AppNavigator';
-// import TabBar from './Screens/Navigation/AppNavigator';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-// import { createAppContainer } from 'react-navigation';
-
-// const Stack = createStackNavigator();
-// import routes from './Screens/routes';
 import DriverDetails from './Screens/DriverDetails';
 import Orders from './Screens/Orders';
 import Routes from './Screens/Route';
@@ -23,71 +15,9 @@ import { MaterialCommunityIcons, Ionicons, Foundation, FontAwesome, FontAwesome5
 import AnimatedTabBar, {TabsConfig, BubbleTabBarItemConfig} from '@gorhom/animated-tabbar';
 
 
-// const TabBar = createBottomTabNavigator({
-//   HomePage: DriverDetails,
-//   RoutePage: Routes,
-//   OrderPage: Orders,
-//   ProfilePage: Profile,
-// })
+// Bottom navigation bar setup with dispalying icons and names for the respective screens
 
-// const NavigationScreens = {
-//   [routes.DRIVERDETAILS]: DriverDetails,
-//   [routes.ROUTES]: Routes,
-//   [routes.ORDERS]: Orders,
-//   [routes.PROFILE]: Profile,
-// };
-
-// const NavigationParameter = [
-//   {
-//     label: routes.DRIVERDETAILS,
-//     routeName: routes.DRIVERDETAILS,
-//     // icons: require('./assets/Home.png'),
-//     icons: props => <FontAwesome {...props} name="home" size={24} color="black" />,
-//   },
-
-//   {
-//     label: routes.ROUTES,
-//     routeName: routes.ROUTES,
-//     icons: BottomBarIcon.ROUTES
-//   },
-
-//   {
-//     label: routes.ORDERS,
-//     routeName: routes.ORDERS,
-//     icons: BottomBarIcon.ORDERS,
-//   },
-
-//   {
-//     label: routes.PROFILE,
-//     routeName: routes.PROFILE,
-//     icons: BottomBarIcon.PROFILE,
-//   },
-// ];
-
-// const bottomBarConfig = {
-//   backgroundColor: 'rgba(92, 219, 149, 1)',
-//   height: 65,
-//   // activeTintColor: 'rgba(237, 245, 225, 1)',
-//   animationDuration: 200,
-//   curveDepth: 25,
-//   curveWidth: 75,
-//   tabCircleDiameter: 45,
-//   label: 20,
-//   bottom: 3,
-//   activeBGColor: 'red',
-//   activeTintColor: 'blue'
-
-// };
-
-
-// const BottomBarStack = getAnimatingBottomBar({
-//   type: AnimationType.ExpandingLabel,
-//   navigationScreens: NavigationScreens,
-//   navigationParameter: NavigationParameter,
-//   configData: {
-//     bottomBarConfig,
-//   },
-// });
+// All the navigation of the app are handled here
 
 const tabs = {
   Home: {
@@ -100,7 +30,6 @@ const tabs = {
       inactiveColor: 'rgba(0,0,0,1)',
     },
     background: {
-      // activeColor: 'rgba(223,215,243,1)',
       activeColor: '#ffe0b2',
       inactiveColor: 'rgba(223,215,243,0)',
     },
@@ -129,7 +58,6 @@ const tabs = {
       inactiveColor: 'rgba(0,0,0,1)',
     },
     background: {
-      // activeColor: 'rgba(223,215,243,1)',
       activeColor: '#dcedc8',
       inactiveColor: 'rgba(223,215,243,0)',
     },
@@ -150,19 +78,24 @@ const tabs = {
   },
 };
 
-const TabNavigator = createBottomTabNavigator(
+//Initializing the routes using react-navigation version 4
+
+const TabNavigator = createBottomTabNavigator(   
   {
     Home: DriverDetails,
     Routes: Routes,
     Orders: Orders,
     Profile: Profile,
   },
+
+  // Using the package for animated bottom bar 
+
   {
     tabBarComponent: 
-      props => <AnimatedTabBar 
+      props => <AnimatedTabBar        
                   tabs={tabs} 
                   {...props} 
-                  preset='bubble' 
+                  preset='bubble'     // there is more option in the package please type the 'react-native-animating-bottom-tab-bar' in google and check
                   style={{height:70,justifyContent:'center',alignItems:'center'}}
                   itemOuterSpace={20}
                   itemInnerSpace={10}
@@ -173,12 +106,11 @@ const TabNavigator = createBottomTabNavigator(
 
 const AppStack = createStackNavigator({
   
-  // Login: {
-  //   screen: Login,
-  //   navigationOptions: { headerShown: null}
-  // },
+  Login: {
+    screen: Login,
+    navigationOptions: { headerShown: null}
+  },
   BottomBarStack: {
-    // screen: BottomBarStack,
     screen: TabNavigator,
     navigationOptions: { headerShown: null}
   },

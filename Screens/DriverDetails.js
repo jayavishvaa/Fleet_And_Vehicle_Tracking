@@ -4,45 +4,25 @@ import { TextInput, Title, Checkbox, Button,Divider } from 'react-native-paper';
 import Screen from '../Constants/Screen';
 import routes from './routes';
 import {  ScrollView } from 'react-native-gesture-handler';
-import { AntDesign } from '@expo/vector-icons';
 import Header from '../Constants/Header';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import LoctionMarker from '../Constants/LoctionMarker';
-// import { lightGreen100 } from 'react-native-paper/lib/typescript/styles/colors';
 
 const {width, height} = Dimensions.get('window');
 
-const fakeDriverLocation = [
-    {
-        uid: 'driver1',
-        latitude: 1,
-        longitude: 0
-    },
-    {
-        uid: 'driver2',
-        latitude: 1,
-        longitude: 0
-    },
-    {
-        uid: 'driver3',
-        latitude: 1,
-        longitude: 0
-    },
-    {
-        uid: 'driver4',
-        latitude: 1,
-        longitude: 0
-    },
-]
-
+// Home page of the Driver app
 
 function DriverDetails() {
     return (
-        <Screen>
+
+        // Screen and Header coded separatly so that we can globally
+        // Screen will adjust the status bar height inorder to avoid any overlay
+         
+        <Screen>     
             <Header/>
             <ScrollView style={{backgroundColor:'rgba(237, 245, 225, 1)',flex:1}}>
 
-                {/* Home page first box */}
+                {/* {Vehicle details container displayed in the top} */}
 
                 <View style={{
                     width:'100%',
@@ -79,62 +59,45 @@ function DriverDetails() {
                         </View>   
                     </View>              
                 </View>
+                
+                {/* {Initialized Mapview Using react native maps} */}
 
-                {/* Home page Mapview Container */}
+                <View style={{flex:1}}>
+                    <MapView
+                        initialRegion={{
+                            latitude: 13.0827,
+                            longitude: 80.2707,
+                            longitudeDelta: 0.025,
+                            latitudeDelta: 0.025
 
-                {/* <View style={{
-                    width:'100%',
-                    // height:500,
-                    backgroundColor:'#fff',
-                    margin:'10%',
-                    // borderRadius:20,
-                    marginTop:0,
-                    alignSelf:'center',
-                    elevation:10,
-                    shadowColor:'#000',
-                    shadowRadius:2,
-                    shadowOffset: { width:0, height: 1},
-                    shadowOpacity: 0.8,
-                    flex:1,
-                    // overflow:'hidden',
-                    marginBottom:0,
-                }}> */}
-                    <View style={{flex:1}}>
-                        <MapView
-                            initialRegion={{
+                        }}
+                        showsCompass={true}
+                        rotateEnabled={false}
+                        showsTraffic={true}
+                        showsUserLocation={true}
+                        showsMyLocationButton={true}
+                        style={styles.MapView}
+                    >
+                        <Marker
+                            coordinate={{
+                                latitude: 13.0827,
+                                longitude: 80.2707, 
+                            }}
+                        >
+                            <Callout>
+                                <Text>I'm here</Text>
+                            </Callout>
+                        </Marker>
+                        <LoctionMarker 
+                            uid="driver"
+                            location={{
                                 latitude: 13.0827,
                                 longitude: 80.2707,
-                                longitudeDelta: 0.025,
-                                latitudeDelta: 0.025
+                            }} />
+                    </MapView>   
+                </View>            
 
-                            }}
-                            showsCompass={true}
-                            rotateEnabled={false}
-                            showsTraffic={true}
-                            showsUserLocation={true}
-                            showsMyLocationButton={true}
-                            style={styles.MapView}
-                        >
-                            <Marker
-                                coordinate={{
-                                    latitude: 13.0827,
-                                    longitude: 80.2707, 
-                                }}
-                                // pinColor = {green}
-                            >
-                                <Callout>
-                                    <Text>I'm here</Text>
-                                </Callout>
-                            </Marker>
-                            <LoctionMarker 
-                                uid="driver"
-                                location={{
-                                    latitude: 13.0827,
-                                    longitude: 80.2707,
-                                }} />
-                        </MapView>   
-                    </View>            
-                {/* </View> */}
+                {/* {Floating container that displays order details and address at the bottom} */}
 
                 <View style={{
                     width:'95%',

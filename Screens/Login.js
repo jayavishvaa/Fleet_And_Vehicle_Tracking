@@ -10,12 +10,14 @@ import AppFormField from '../Constants/Forms/FormField';
 import AppButton from '../Constants/Forms/SubmitButton';
 import { ScrollView } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo-linear-gradient';
-// import { useNavigation } from '@react-navigation/native';
 import { SwitchActions } from 'react-navigation';
 
 const { width, height } = Dimensions.get("window");
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/ ;
+
+// Using Formik and yup for form validation
+// Initiation the form fields in the login page
 
 const validationSchema = Yup.object().shape({
     phoneNumber: Yup.string()
@@ -31,49 +33,16 @@ const validationSchema = Yup.object().shape({
 
 const Login = ({navigation}) => {
 
-    // const navigation = useNavigation();
 
     const [checked, setChecked] = useState(false);
-
-    const handleSubmit = async formData => {
-        // var url = 'http://192.168.1.3:/app.php';
-        var headers = {
-            
-        };
-
-        var userName = formData.userName;
-        var password = formData.password;
-        console.log(userName + "" +  password);
-        
-
-        await fetch('http://192.168.1.9/app.php',
-            {
-                 method: 'post',
-                 headers: headers,
-                 body: JSON.stringify({
-                    username: userName,
-                    password: password,
-                 })
-            }
-            )
-            .then((response) => response.json())
-            .then((responseJson) => {
-                // console.log(response);
-                alert(responseJson);
-            })
-            .catch((error) => {
-                alert("Error:" + error)
-            });
-    }
 
 
     return (
         <Screen>
             <View style={{flex:1}}>
                 <View style={{flex:1}}>
-                    <LinearGradient
+                    <LinearGradient    // Linear gradient for the background colour in the login page
                         style={{
-                            // flex:1,
                             height:height-300,
                             borderBottomLeftRadius:300
                         }}
@@ -82,18 +51,9 @@ const Login = ({navigation}) => {
                         end={{x: 1, y: 1 }}
                         colors={['#e91e63','transparent']}
                     >
-                        {/* <Image 
-                            source={require('../assets/Fleet_logo.jpeg')}
-                            style={{
-                                width:120,
-                                height:120,
-                                alignSelf:'center',
-                                marginTop: '10%'
-                            }}
-                        /> */}
                     </LinearGradient>
                         
-                    <View style={{
+                    <View style={{             // Login page fields container
                         alignItems:'center',
                         marginTop:'10%',
                         width:'80%',
@@ -115,14 +75,12 @@ const Login = ({navigation}) => {
                             <Text style={{color: 'black',fontSize: 25,fontWeight: "bold",textAlign:'center'}}>LOG IN</Text>
                         </View>
                         <View style={{width:'80%'}}>
-                            <AppForm
+                            <AppForm                                               // Appform was initialized separately so that we can use the same design globally                   
                                 initialValues={{ phoneNumber: '', OTP: '' }}
                                 validationSchema={validationSchema}
-                                // onSubmit={handleSubmit}
                                 onSubmit={() => navigation.navigate('BottomBarStack')}
                             >
-                                {/* <ErrorMessage error="Something went wrong" visible={error}/> */}
-                                <AppFormField
+                                <AppFormField                         // AppFormField was initialized separately so that we can use the same design globally    
                                     autoCapitalize="none"
                                     autoCorrect={false}
                                     keyboardType="default"
@@ -141,42 +99,14 @@ const Login = ({navigation}) => {
                                     placeholder="OTP"
 
                                 />
-                                {/* <View style={{flexDirection:'row',justifyContent:'space-evenly',marginRight:'2%'}}>
-                                    <View style={{flexDirection:'row',alignItems:'center'}}>
-                                        <Checkbox
-                                            status={checked ? 'checked' : 'unchecked'}
-                                            color="rgba(31, 147, 255, 1)"
-                                            onPress={() => {
-                                                setChecked(!checked);
-                                            }}
-                                        />
-                                        <Text>Remember me</Text>
-                                    </View>
-                                    <View style={{alignItems:'center',justifyContent:'center',marginLeft:'15%'}}>
-                                        <Text style={{color:'rgba(31, 147, 255, 1)'}}>Forgot Password</Text>
-                                    </View>
-                                </View> */}
-                                    <AppButton 
-                                        title="LOG IN" 
-                                        style={{marginTop:'10%',alignSelf:'center',width:'70%',borderRadius:25}}
-                                        // onpress={() => navigation.navigate(routes.NAVIGATIONAPP)}
-                                    />
+                                <AppButton                           // AppButton was initialized separately so that we can use the same design globally    
+                                    title="LOG IN" 
+                                    style={{marginTop:'10%',alignSelf:'center',width:'70%',borderRadius:25}}
+                                />
                             </AppForm>   
                         </View>           
-                    </View>
-                    
+                    </View> 
                 </View>
-            
-                {/* <Image 
-                    source={require('../assets/IITM_logo.png')}
-                    style={{
-                        width:150,
-                        height:150,
-                        alignSelf:'center',
-                        marginTop:'15%'
-                    }}
-                /> */}
-                
             </View>
         </Screen>
     )
